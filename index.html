@@ -3,53 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Um'er Heart</title>
+    <title>Um'er Heart Tunnel</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="heart-container">
-        <div class="text" style="--i: 1;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 2;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 3;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 4;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 5;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 6;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 7;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 8;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 9;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 10;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 11;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 12;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 13;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 14;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 15;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 16;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 17;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 18;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 19;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 20;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 21;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 22;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 23;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 24;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 25;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 26;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 27;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 28;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 29;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 30;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 31;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 32;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 33;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 34;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 35;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 36;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 37;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 38;">Um'erx1F🩵🐰</div>
-        <div class="text" style="--i: 39;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 40;">Um'er🩵🐰</div>
-    </div>
+    <div class="heart-container" id="heart-container">
+        </div>
+
+    <script>
+        const container = document.getElementById('heart-container');
+        const textToShow = "Um'er🩵🐰";
+        const elementCount = 180; // <-- ปรับจำนวนชิ้นได้ที่นี่
+
+        for (let i = 1; i <= elementCount; i++) {
+            const textDiv = document.createElement('div');
+            textDiv.classList.add('text');
+            textDiv.style.setProperty('--i', i);
+            textDiv.innerText = textToShow;
+            container.appendChild(textDiv);
+        }
+    </script>
 
 </body>
 </html>
