@@ -22,6 +22,11 @@
             align-items: center;
             transform-style: preserve-3d;
             perspective: 800px; 
+            
+            /*
+             * คำสั่งนี้จะเรียกใช้ @keyframes rotate-heart
+             * ซึ่งเป็นส่วนที่ "เอียงกล้อง" ครับ
+             */
             animation: rotate-heart 30s linear infinite;
         }
 
@@ -34,21 +39,30 @@
             white-space: nowrap;
             text-shadow: 0 0 5px #fff, 0 0 10px #ea80b0, 0 0 15px #ea80b0;
             transform-style: preserve-3d;
+            
+            /* นี่คือส่วนที่สร้าง "เกลียว" หรือ "อุโมงค์" */
             transform: rotateY(calc(var(--i) * 2deg)) translateZ(calc(var(--i) * 2.5px));
+            
             animation: wave-horizontal 4s infinite alternate ease-in-out;
             animation-delay: calc(var(--i) * -0.05s);
         }
 
-        /* Keyframes ที่ทำให้เป็นรูปหัวใจ */
+        /* * VVVV นี่คือส่วนที่สำคัญที่สุด ที่ทำให้เป็นหัวใจ VVVV
+         */
         @keyframes rotate-heart {
             from {
-                /* นี่คือส่วนที่เอียงกล้องให้เป็นรูปหัวใจ */
+                /*
+                 * rotateX(-25deg) -> นี่คือการ "เอียงกล้อง" ให้เห็นเป็นรูปหัวใจ
+                 * translateY(75px) -> เลื่อนหัวใจลงมาหน่อย
+                 */
                 transform: rotateY(0deg) rotateX(-25deg) translateY(75px);
             }
             to {
                 transform: rotateY(360deg) rotateX(-25deg) translateY(75px);
             }
         }
+        /* * AAAA จบส่วนที่สำคัญที่สุด AAAA
+         */
 
         /* Keyframes ที่ทำให้ขยับเป็นคลื่น */
         @keyframes wave-horizontal {
