@@ -11,8 +11,8 @@
             height: 100vh;
             display: grid;
             place-items: center;
-            background-color: #000; /* พื้นหลังสีดำ */
-            overflow: hidden; /* ซ่อนส่วนที่ล้นจอ */
+            background-color: #000;
+            overflow: hidden;
         }
 
         .heart-container {
@@ -22,44 +22,30 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            
-            /* เปิดใช้งาน 3D */
             transform-style: preserve-3d;
             perspective: 900px;
             
-            /* Animation ให้หมุนวน */
+            /* นี่คือส่วนสำคัญที่ "เอียง" และ "หมุน" หัวใจ */
             animation: rotate-heart 30s linear infinite;
         }
 
         .text {
-            position: absolute; /* ทำให้ทุกชิ้นซ้อนกันที่จุดเดียว */
-            
-            /* สไตล์จากในรูป */
-            color: #ea80b0; /* สีชมพู */
-            font-size: 1.4rem; /* ขนาดตัวอักษร */
+            position: absolute;
+            color: #ea80b0;
+            font-size: 1.4rem;
             font-family: sans-serif;
             font-weight: bold;
-            white-space: nowrap; /* ไม่ให้ข้อความตกบรรทัด */
-            text-shadow: 0 0 5px #fff, 0 0 10px #ea80b0; /* เงาเรืองแสง */
-            
+            white-space: nowrap;
+            text-shadow: 0 0 5px #fff, 0 0 10px #ea80b0;
             transform-style: preserve-3d;
-
-            /* * การจัดเรียง 3D
-             * (ถ้าข้อความ "Um'er🩵🐰" ดูชิดไป ให้เพิ่มเลข 15px ตรง translateZ)
-             */
             transform: rotateY(calc(var(--i) * 7.5deg)) translateZ(calc(var(--i) * 15px));
-
-            /* * Animation การเคลื่อนไหว (เหมือนโค้ดในรูป) */
             animation: wave-horizontal 4s infinite alternate ease-in-out;
-            
-            /* * animation-delay: หน่วงเวลาให้เริ่มไม่พร้อมกัน */
             animation-delay: calc(var(--i) * -0.1s);
         }
 
-        /* Keyframes สำหรับการหมุนหัวใจทั้งหมด */
+        /* นี่คือ Keyframe ที่ "เอียง" กล้อง (rotateX) */
         @keyframes rotate-heart {
             from {
-                /* rotateX(-15deg) คือการเอียงกล้องให้เห็นเป็นรูปหัวใจ */
                 transform: rotateY(0deg) rotateX(-15deg);
             }
             to {
@@ -67,14 +53,12 @@
             }
         }
 
-        /* Keyframes สำหรับการขยับขึ้นลง (เหมือนในรูป) */
+        /* Keyframes สำหรับการขยับขึ้นลง */
         @keyframes wave-horizontal {
             from {
-                /* ตำแหน่งปกติ */
                 transform: rotateY(calc(var(--i) * 7.5deg)) translateZ(calc(var(--i) * 15px)) translateY(0px);
             }
             to {
-                /* ขยับขึ้น */
                 transform: rotateY(calc(var(--i) * 7.5deg)) translateZ(calc(var(--i) * 15px)) translateY(-20px);
             }
         }
@@ -107,7 +91,7 @@
         <div class="text" style="--i: 21;">Um'er🩵🐰</div>
         <div class="text" style="--i: 22;">Um'er🩵🐰</div>
         <div class="text" style="--i: 23;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 24;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 24;">Um'erxt🐰</div>
         <div class="text" style="--i: 25;">Um'er🩵🐰</div>
         </div>
 
