@@ -4,70 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Um'er Heart</title>
-    
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: grid;
-            place-items: center;
-            background-color: #000;
-            overflow: hidden;
-        }
-
-        .heart-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transform-style: preserve-3d;
-            perspective: 900px;
-            
-            /* นี่คือส่วนสำคัญที่ "เอียง" และ "หมุน" หัวใจ */
-            animation: rotate-heart 30s linear infinite;
-        }
-
-        .text {
-            position: absolute;
-            color: #ea80b0;
-            font-size: 1.4rem;
-            font-family: sans-serif;
-            font-weight: bold;
-            white-space: nowrap;
-            text-shadow: 0 0 5px #fff, 0 0 10px #ea80b0;
-            transform-style: preserve-3d;
-            transform: rotateY(calc(var(--i) * 7.5deg)) translateZ(calc(var(--i) * 15px));
-            animation: wave-horizontal 4s infinite alternate ease-in-out;
-            animation-delay: calc(var(--i) * -0.1s);
-        }
-
-        /* นี่คือ Keyframe ที่ "เอียง" กล้อง (rotateX) */
-        @keyframes rotate-heart {
-            from {
-                transform: rotateY(0deg) rotateX(-15deg);
-            }
-            to {
-                transform: rotateY(360deg) rotateX(-15deg);
-            }
-        }
-
-        /* Keyframes สำหรับการขยับขึ้นลง */
-        @keyframes wave-horizontal {
-            from {
-                transform: rotateY(calc(var(--i) * 7.5deg)) translateZ(calc(var(--i) * 15px)) translateY(0px);
-            }
-            to {
-                transform: rotateY(calc(var(--i) * 7.5deg)) translateZ(calc(var(--i) * 15px)) translateY(-20px);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="heart-container">
-        
         <div class="text" style="--i: 1;">Um'er🩵🐰</div>
         <div class="text" style="--i: 2;">Um'er🩵🐰</div>
         <div class="text" style="--i: 3;">Um'er🩵🐰</div>
@@ -91,9 +32,24 @@
         <div class="text" style="--i: 21;">Um'er🩵🐰</div>
         <div class="text" style="--i: 22;">Um'er🩵🐰</div>
         <div class="text" style="--i: 23;">Um'er🩵🐰</div>
-        <div class="text" style="--i: 24;">Um'erxt🐰</div>
+        <div class="text" style="--i: 24;">Um'er🩵🐰</div>
         <div class="text" style="--i: 25;">Um'er🩵🐰</div>
-        </div>
+        <div class="text" style="--i: 26;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 27;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 28;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 29;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 30;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 31;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 32;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 33;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 34;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 35;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 36;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 37;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 38;">Um'erx1F🩵🐰</div>
+        <div class="text" style="--i: 39;">Um'er🩵🐰</div>
+        <div class="text" style="--i: 40;">Um'er🩵🐰</div>
+    </div>
 
 </body>
 </html>

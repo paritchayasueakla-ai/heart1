@@ -1,0 +1,79 @@
+/* 1. ตั้งค่าหน้าเว็บ (พื้นหลัง, จัดกลาง) */
+body {
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: #000;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+/* 2. สร้างเวที 3D และสั่งให้หมุน */
+.heart-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    transform-style: preserve-3d;
+    perspective: 900px; /* ความลึกของมิติ 3D */
+    
+    /* Animation ให้หมุนวน */
+    animation: rotate-heart 30s linear infinite;
+}
+
+/* 3. สไตล์ของตัวอักษรแต่ละชิ้น */
+.text {
+    position: absolute; /* ทำให้ทุกชิ้นซ้อนกันที่จุดเดียว */
+    
+    /* --- นี่คือสไตล์ที่คล้ายกับในรูป .love_word --- */
+    color: #ea80b0;         /* สีชมพู */
+    font-size: 1.4rem;     /* ขนาด */
+    font-weight: bold;
+    text-shadow: 0 0 5px #fff, 0 0 10px #ea80b0; /* เงาเรืองแสง */
+    white-space: nowrap;   /* ไม่ให้ตกบรรทัด */
+    /* ------------------------------------------ */
+    
+    transform-style: preserve-3d;
+
+    /* --- นี่คือส่วนสำคัญที่ *ไม่มี* ในรูป --- */
+    /* สร้างอุโมงค์ 3D โดยหมุน (rotateY) และดันลึก (translateZ) */
+    /* ยิ่งเลข --i มาก ยิ่งหมุนไปไกล และยิ่งลึกมาก */
+    transform: rotateY(calc(var(--i) * 9deg)) translateZ(calc(var(--i) * 8px));
+    
+    
+    /* --- นี่คือสไตล์ที่คล้ายกับในรูป .love_horizontal --- */
+    /* สั่งให้ขยับขึ้น-ลง */
+    animation: wave-horizontal 4s infinite alternate ease-in-out;
+    /* หน่วงเวลาให้เกิดเอฟเฟกต์คลื่น */
+    animation-delay: calc(var(--i) * -0.1s);
+    /* ------------------------------------------------ */
+}
+
+/* 4. Keyframes (ท่าทาง) สำหรับการเคลื่อนไหว */
+
+/* ท่าหมุนเวที 3D ทั้งหมด (เพื่อให้เห็นเป็นรูปหัวใจ) */
+@keyframes rotate-heart {
+    from {
+        /* rotateX(-15deg) คือการเอียงกล้องให้เห็นเป็นรูปหัวใจ */
+        transform: rotateY(0deg) rotateX(-15deg);
+    }
+    to {
+        transform: rotateY(360deg) rotateX(-15deg);
+    }
+}
+
+/* ท่าขยับขึ้น-ลง (ที่ชื่อ 'wave-horizontal') */
+@keyframes wave-horizontal {
+    from {
+        /* ตำแหน่งเริ่มต้น (ต้องใส่ transform เดิมไว้ด้วย) */
+        transform: rotateY(calc(var(--i) * 9deg)) translateZ(calc(var(--i) * 8px)) translateY(0px);
+    }
+    to {
+        /* ตำแหน่งตอนขยับขึ้น (ต้องใส่ transform เดิมไว้ด้วย) */
+        transform: rotateY(calc(var(--i) * 9deg)) translateZ(calc(var(--i) * 8px)) translateY(-20px);
+    }
+}
