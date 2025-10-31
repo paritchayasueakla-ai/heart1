@@ -3,95 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Um'er Heart Tunnel (Single File)</title>
+    <title>Static 2D Text Heart</title>
 
     <style>
+        /* 1. จัดหน้าจอให้อยู่ตรงกลาง */
         body {
-            margin: 0;
-            height: 100vh;
             display: grid;
             place-items: center;
+            min-height: 100vh;
             background-color: #000;
-            overflow: hidden;
         }
 
-        .heart-container {
+        /* 2. สร้าง "กล่อง" หัวใจ (เหมือนเดิม) */
+        .heart-shape {
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transform-style: preserve-3d;
-            perspective: 800px; 
+            width: 200px;
+            height: 200px;
             
-            /*
-             * คำสั่งนี้จะเรียกใช้ @keyframes rotate-heart
-             * ซึ่งเป็นส่วนที่ "เอียงกล้อง" ครับ
+            /* * เราเปลี่ยน background-color เป็น transparent (โปร่งใส)
+             * เพราะเราไม่ต้องการหัวใจสีชมพูทึบๆ แล้ว
              */
-            animation: rotate-heart 30s linear infinite;
+            background-color: transparent; 
+            
+            /* หมุนสี่เหลี่ยม 45 องศา */
+            transform: rotate(-45deg);
         }
 
-        .text {
+        /* 3. สร้าง "ส่วนโค้ง" 2 ข้าง (เหมือนเดิม) */
+        .heart-shape::before,
+        .heart-shape::after {
+            content: '';
             position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: transparent; /* โปร่งใส */
+            border-radius: 50%;
+        }
+
+        .heart-shape::before {
+            top: -100px;
+            left: 0;
+        }
+
+        .heart-shape::after {
+            top: 0;
+            left: -100px;
+        }
+
+        /* * 4. VVVV นี่คือส่วนที่เพิ่มเข้ามา VVVV
+         * สร้างข้อความ "Um'er🩵" 
+         */
+        .text-content {
+            position: absolute;
+            
+            /* * เราต้อง "หมุนกลับ" 45 องศา
+             * (เพราะมันอยู่ใน .heart-shape ที่หมุน -45 องศา)
+             * เพื่อให้ตัวหนังสือกลับมาตั้งตรง
+             */
+            transform: rotate(45deg);
+
+            /* จัดให้อยู่กลางหัวใจ (อาจจะต้องปรับเลข) */
+            top: 60px; 
+            left: 30px;
+            
+            /* สไตล์ตัวอักษร */
             color: #ea80b0;
-            font-size: 1.4rem;
+            font-size: 3.5rem; /* ทำให้ใหญ่ขึ้น */
             font-family: sans-serif;
             font-weight: bold;
             white-space: nowrap;
             text-shadow: 0 0 5px #fff, 0 0 10px #ea80b0, 0 0 15px #ea80b0;
-            transform-style: preserve-3d;
-            
-            /* นี่คือส่วนที่สร้าง "เกลียว" หรือ "อุโมงค์" */
-            transform: rotateY(calc(var(--i) * 2deg)) translateZ(calc(var(--i) * 2.5px));
-            
-            animation: wave-horizontal 4s infinite alternate ease-in-out;
-            animation-delay: calc(var(--i) * -0.05s);
         }
 
-        /* * VVVV นี่คือส่วนที่สำคัญที่สุด ที่ทำให้เป็นหัวใจ VVVV
-         */
-        @keyframes rotate-heart {
-            from {
-                /*
-                 * rotateX(-25deg) -> นี่คือการ "เอียงกล้อง" ให้เห็นเป็นรูปหัวใจ
-                 * translateY(75px) -> เลื่อนหัวใจลงมาหน่อย
-                 */
-                transform: rotateY(0deg) rotateX(-25deg) translateY(75px);
-            }
-            to {
-                transform: rotateY(360deg) rotateX(-25deg) translateY(75px);
-            }
-        }
-        /* * AAAA จบส่วนที่สำคัญที่สุด AAAA
-         */
-
-        /* Keyframes ที่ทำให้ขยับเป็นคลื่น */
-        @keyframes wave-horizontal {
-            from {
-                transform: rotateY(calc(var(--i) * 2deg)) translateZ(calc(var(--i) * 2.5px)) translateY(0px);
-            }
-            to {
-                transform: rotateY(calc(var(--i) * 2deg)) translateZ(calc(var(--i) * 2.5px)) translateY(-20px);
-            }
-        }
     </style>
-    </head>
+</head>
 <body>
 
-    <div class="heart-container" id="heart-container">
-        </div>
-
-    <script>
-        const container = document.getElementById('heart-container');
-        const textToShow = "Um'er🩵🐰";
-        const elementCount = 180; // <-- จำนวนชิ้น
-
-        for (let i = 1; i <= elementCount; i++) {
-            const textDiv = document.createElement('div');
-            textDiv.classList.add('text');
-            textDiv.style.setProperty('--i', i);
-            textDiv.innerText = textToShow;
-            container.appendChild(textDiv);
-        }
-    </script>
-    </body>
-</html>
+    <div class="heart-shape">
+        <div class="text-
